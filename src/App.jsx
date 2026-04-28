@@ -7,12 +7,12 @@ const features = [
     title: "Creator Health Metrics",
     subtitle: "Engagement, retention, and conversion on the main dashboard.",
     problem:
-      "Whop's default analytics dashboard shows Gross Revenue, Net Revenue, New Users, MRR, ARR, and Payments Breakdown. These are accounting metrics. Churn rate and churned revenue exist as optional widgets you can add, but engagement percentage, retention rate, and conversion rate are not tracked at all. A creator can see how much money they made but can't see how healthy their community actually is.",
+      "Whop's default analytics dashboard shows Gross Revenue, Net Revenue, New Users, MRR, ARR, and Payments Breakdown. These are accounting metrics. Churn rate and churned revenue exist as optional add-on widgets, and there's a third-party 'Subscription Analytics' app in the app store that tracks trial conversion and retention, but it has zero reviews and most creators won't discover it. Engagement percentage, visitor traffic, and conversion rate are not tracked anywhere on the platform. A creator can see how much money they made but can't see how healthy their community actually is.",
     competitor: "Skool + Circle",
     competitorDetail:
-      "Skool's dashboard shows Members, MRR, Engagement %, and Retention % in the top row by default. Below that, a Growth section tracks Visitors, Signups, Conversion Rate, and New MRR. Circle takes it further with Activity Scores that benchmark your community's engagement against similar-sized communities on the platform.",
+      "Skool's dashboard shows Members, MRR, Engagement %, and Retention % in the top row by default. Below that, a Growth section tracks Visitors, Signups, Conversion Rate, and New MRR. Circle goes even further with separate tabs for Audience, Engagement, Marketing, Website, and Payments, each with dedicated metrics. Circle also benchmarks your community's engagement against similar-sized communities on the platform.",
     proposal:
-      "Add Engagement % (active members / total members), Retention % (month-over-month), and a Visitor to Signup to Paying Member conversion funnel to Whop's default analytics view. The churn widgets already exist as opt-in, but making health metrics the default view (not just revenue metrics) would help creators and AMs catch declining engagement before it shows up as lost revenue.",
+      "Surface Engagement %, Retention %, and a Visitor to Signup to Paying Member conversion funnel on Whop's default analytics view. Some of this data is technically available through opt-in widgets and a third-party app, but the metrics that matter most for creator health should be front and center, not buried behind installs and add-ons. Circle organizes their dashboard into Audience, Engagement, Marketing, Website, and Payments tabs. Whop could adopt a similar structure to give creators multiple lenses on their business, not just revenue.",
     impact:
       "Creators spot problems earlier. AMs can prioritize accounts by health, not just revenue. Shifts the dashboard from backward-looking (what you earned) to forward-looking (what's about to change).",
     sources: "Skool dashboard (firsthand), Circle Activity Scores, Whop dashboard (firsthand as seller)",
@@ -33,12 +33,12 @@ const features = [
     title: "Member-Level Activity Tracking",
     subtitle: "See which individual members are drifting before they leave.",
     problem:
-      "Whop's Users table shows member status, email, product, total spend, and cancel reason. But there's no visibility into individual engagement patterns: when they last logged in, how often they participate, or whether their activity is trending up or down.",
+      "Whop's Users table shows member status, email, product, total spend, and cancel reason. Clicking on an individual user reveals a profile with Payments, Memberships, Invoices, and a 'Journey' section. But the Journey section only shows 'No recent activity' with no historical data. There's no visibility into when a member last logged in, how often they participate, or whether their activity is trending up or down. The infrastructure for member-level tracking exists (the Journey section is already there), but it's not populated with actionable data.",
     competitor: "Skool + Circle",
     competitorDetail:
       "Skool shows a daily visual activity chart on every member's profile, covering the past year. Circle tracks who's active and who's gone quiet, letting admins filter their member list by engagement level.",
     proposal:
-      "Add a member health view: last login date, posts and comments in the last 30 days, activity trend (up, down, flat), and a color-coded health indicator. Let creators sort and filter their member list by engagement level. This gives AMs a concrete list of 'these 15 members need a check-in this week' instead of guessing.",
+      "Populate the existing Journey section on each user profile with real engagement data: last login date, posts and comments in the last 30 days, activity trend (up, down, flat), and a color-coded health indicator. Let creators sort and filter their member list by engagement level. The user profile infrastructure already exists. Filling it with activity data would give AMs a concrete list of 'these 15 members need a check-in this week' instead of guessing.",
     impact:
       "Enables proactive retention at the individual level. Makes the AM role data-driven instead of reactive. Pairs naturally with re-engagement workflows for automated follow-up.",
     sources: "Skool member profiles, Circle engagement filtering, Whop Users table (firsthand as seller)",
@@ -58,15 +58,15 @@ const features = [
     title: "Cancellation Flow Intervention",
     subtitle: "Intercept churn at the moment it happens.",
     problem:
-      "When a member cancels on Whop, they click cancel and they're gone. Whop collects cancel reasons in the Users table (which is smart), but this data is only visible after the member has already left. There's no intervention at the point of cancellation.",
+      "When a member cancels on Whop, they click cancel and they're gone. Whop collects cancel reasons in the Users table, which is valuable. There's also a third-party app called 'Rejoin' that recovers churned members automatically with branded win-back emails after they've already left. But neither the native platform nor Rejoin intervenes at the actual moment of cancellation. The highest-intent moment to save a member is when they click 'cancel,' and right now nothing happens there.",
     competitor: "Skool + Kajabi",
     competitorDetail:
-      "Skool offers a 'Cancellation video' Pro plugin that shows members a personalized video from the creator on the cancel page before the cancellation completes. Kajabi lets creators offer a membership pause or a discount at the point of cancellation.",
+      "Skool offers a 'Cancellation video' Pro plugin that shows members a personalized video from the creator on the cancel page before the cancellation completes. Kajabi lets creators offer a membership pause or a discount at the point of cancellation. Both intercept churn before it happens, not after.",
     proposal:
-      "Build a customizable cancellation flow. When a member clicks cancel, show a creator-recorded video, offer a pause option (30, 60, or 90 days), or present a discount on next month. Whop already has the ability to pause payment collection via Zapier actions, so the backend capability exists. Making it self-serve at the cancel page would be the next step.",
+      "Build a customizable cancellation flow that intervenes before the member leaves, not after. When a member clicks cancel, show a creator-recorded video, offer a pause option (30, 60, or 90 days), or present a discount on next month. Whop already has the backend capability to pause payment collection (available via Zapier actions), and Rejoin proves there's demand for churn recovery. Combining pre-cancel intervention with post-cancel win-back would create a complete retention layer that neither tool provides alone.",
     impact:
       "Recovers passive churn at the highest-intent moment. Gives AMs a concrete retention tool to configure per account. Turns existing cancel reason data from reactive reporting into proactive intervention.",
-    sources: "Skool Plugins page (firsthand), Kajabi cancel flow, Whop Users table (firsthand), Whop Zapier actions",
+    sources: "Skool Plugins page (firsthand), Kajabi cancel flow, Whop Users table (firsthand), Whop Zapier actions, Rejoin app (Whop app store)",
     images: [
       { src: "/img/skool_plugins.png", label: "Skool: Cancellation video plugin and level gating" },
     ],
@@ -74,6 +74,7 @@ const features = [
       { label: "Cancel-page video", whop: "Not available", comp: "Skool: Pro plugin" },
       { label: "Pause option at cancel", whop: "Via Zapier only", comp: "Kajabi: Native" },
       { label: "Discount offer at cancel", whop: "Not available", comp: "Kajabi: Native" },
+      { label: "Post-churn win-back", whop: "Rejoin app (3rd party)", comp: "Not native" },
       { label: "Cancel reason collection", whop: "Available (Users table)", comp: "Available" },
     ],
   },
@@ -83,23 +84,23 @@ const features = [
     title: "Native Re-engagement Workflows",
     subtitle: "Automated nudges before members drift away.",
     problem:
-      "Whop supports automated messages when members join or leave, but nothing in between. The gap between 'joined' and 'left' is where passive churn lives. A member stops logging in, engagement drops, and eventually they cancel or their card expires. Whop has Zapier integration that could handle this, but most creators aren't technical enough to build Zaps.",
+      "Whop supports automated messages when members join or leave, but nothing in between. There is a third-party 'Automations' app in the Whop app store (4.86 stars, 14 reviews) that adds triggers, conditional logic, wait nodes, and if/else branching. One reviewer called it 'a real assistant handling tasks in the background.' But it's a third-party app that most creators will never discover, and it doesn't come with pre-built retention-focused templates. The gap between 'joined' and 'left' is where passive churn lives, and solving it shouldn't require finding an obscure app.",
     competitor: "Circle",
     competitorDetail:
-      "Circle has a visual workflow builder where creators set up conditional sequences without code. Examples: 'If a member hasn't logged in for 14 days, send a DM.' 'If someone joins and doesn't post within 7 days, send a welcome nudge.' Circle also sends automated weekly digest emails to members showing what they missed.",
+      "Circle bakes workflows directly into the core platform with 55 pre-built templates organized by category: Email Hub, AI, Moderation, Onboarding, Engagement, Paywalls, and Administrative. Creators don't build from scratch. They pick a template like 'follow-up on email open,' 'agent answers unanswered posts,' or 'welcome new members with context' and customize it. Circle also sends automated weekly digest emails to members showing what they missed, driving re-engagement without any creator effort.",
     proposal:
-      "Build a native visual workflow builder inside Whop's dashboard. Start with 3-4 simple triggers: inactive for X days, payment failing, course completed, engagement score dropping. The building blocks already exist through Zapier and webhooks, but wrapping them in a no-code UI inside the dashboard would make automations accessible to every creator. Also add automated weekly digest emails.",
+      "The Automations app in Whop's app store proves there's demand for workflow tooling. The next step is making it native to the core platform with pre-built, retention-focused templates that creators can activate in one click. Think 'member inactive for 14 days' or 'payment failing, send reminder' as starter templates. Also add automated weekly digest emails so members see what they missed. Circle offers 55 templates across 7 categories. Whop doesn't need 55 on day one, but even 10 high-impact templates built into the dashboard would close the gap.",
     impact:
       "Catches passive churn before it becomes a cancellation. Reduces AM workload on manual check-ins. Scales retention across the entire creator base.",
-    sources: "Circle workflow builder, Circle weekly digests, Whop Zapier integration (confirmed), Whop automated messages (confirmed)",
+    sources: "Circle workflow builder (firsthand), Circle weekly digests, Whop Automations app (app store, 14 reviews), Whop Zapier integration (confirmed)",
     images: [
       { src: "/img/circle_workflows.png", label: "Circle: 55 pre-built workflow templates" },
       { src: "/img/circle_ai_workflows.png", label: "Circle: AI-powered workflow templates" },
     ],
     metrics: [
       { label: "Join/leave messages", whop: "Available", comp: "Circle: Available" },
-      { label: "Inactivity triggers", whop: "Via Zapier only", comp: "Circle: Visual builder" },
-      { label: "Conditional sequences", whop: "Via Zapier only", comp: "Circle: No-code native" },
+      { label: "Inactivity triggers", whop: "3rd party app only", comp: "Circle: Native templates" },
+      { label: "Pre-built templates", whop: "Not available", comp: "Circle: 55 templates" },
       { label: "Weekly digest emails", whop: "Not available", comp: "Circle: Automated" },
     ],
   },
@@ -109,23 +110,23 @@ const features = [
     title: "Traffic Source Attribution",
     subtitle: "Where are your visitors actually coming from?",
     problem:
-      "When a creator posts content on TikTok, runs ads on Meta, or gets mentioned in a YouTube video, they have no way to see inside Whop which channel drove the traffic. The dashboard tracks revenue endpoints but not acquisition sources. Creators who are spending money or time on marketing are flying blind on what's actually working.",
-    competitor: "Skool",
+      "Whop actually has native pixel integrations built into its Settings page for Google Analytics, Meta, TikTok, X, Reddit, Pinterest, Hyros, and Hubspot. The infrastructure to track traffic exists. But the data flows out to those external platforms and never comes back into Whop's dashboard. A creator can install the Meta pixel to send data to Facebook, but they can't see inside Whop where their visitors are coming from, which channels convert best, or what their bounce rate is. They have to leave the platform to answer basic growth questions.",
+    competitor: "Skool + Circle",
     competitorDetail:
-      "Skool's dashboard includes a 'Where your about page visitors come from' section that breaks down traffic by source: organic search, social media, direct, referral. Skool also offers Meta Pixel tracking and Google Ads tracking as Pro plugins for paid ad attribution.",
+      "Skool's dashboard includes a 'Where your about page visitors come from' section that breaks down traffic by source: organic search, social media, direct, referral. Skool also offers Meta Pixel and Google Ads tracking as Pro plugins. Circle goes further with a dedicated Website tab showing Unique Visitors, Page Views, and Bounce Rate natively. Both platforms keep growth data inside the product where creators can see it.",
     proposal:
-      "Add a native traffic source breakdown to the analytics dashboard. Show where storefront visitors are coming from: organic, social, direct, referral, and paid. For creators running ads, offer native Meta Pixel and Google Ads tracking integration so they can measure ROAS without third-party setup. Whop already has Zapier integration with Facebook Conversions, but building this natively would make it accessible to non-technical creators.",
+      "Pull the traffic data that Whop is already sending out via pixels back into its own dashboard. Show where storefront visitors are coming from (organic, social, direct, referral, paid) and basic website metrics (unique visitors, page views, bounce rate). The pixel integrations are already built. The missing piece is a native analytics view that surfaces this data inside Whop so creators don't have to context-switch to Google Analytics or Meta Business Suite to understand their growth.",
     impact:
-      "Creators double down on what works. AMs can advise creators on growth strategy with real data instead of guessing. Reduces reliance on external analytics tools.",
-    sources: "Skool dashboard (firsthand), Skool Pro plugins list, Whop Zapier integration page",
+      "Creators see what's working without leaving Whop. AMs can advise on growth strategy with real data. Closes the loop on tracking infrastructure that already exists but isn't surfaced.",
+    sources: "Skool dashboard (firsthand), Circle Website tab (firsthand), Whop Settings pixel integrations (firsthand as seller)",
     images: [
       { src: "/img/whop_pixels.png", label: "Whop: Pixels exist in settings but data stays external" },
     ],
     metrics: [
-      { label: "Traffic sources", whop: "Not tracked", comp: "Skool: Default view" },
-      { label: "Meta Pixel native", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
-      { label: "Google Ads tracking", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
-      { label: "Referral tracking", whop: "Affiliate system", comp: "Skool: Built into sources" },
+      { label: "Traffic source breakdown", whop: "Not in dashboard", comp: "Skool: Default view" },
+      { label: "Unique visitors / page views", whop: "Not in dashboard", comp: "Circle: Website tab" },
+      { label: "Bounce rate", whop: "Not in dashboard", comp: "Circle: Website tab" },
+      { label: "Pixel integrations", whop: "Available (Settings)", comp: "Skool: Pro plugins" },
     ],
   },
   {
@@ -134,24 +135,24 @@ const features = [
     title: "Creator-Trained AI Agent",
     subtitle: "24/7 member support using the creator's own content.",
     problem:
-      "Creators can't be online 24/7, but members have questions at all hours. Whop has an AI Chat app in its app store, but it's generic. It doesn't know anything about the specific creator's courses, posts, or community context.",
+      "Creators can't be online 24/7, but members have questions at all hours. Whop's app store has two AI tools: 'Dashboard Agent' (helps creators manage their business) and 'Digital Products AI' (generates offers and products). Both are creator-facing. Neither lets members interact with an AI trained on the community's own content. When a member asks a question at 2am, there's no agent pulling answers from the creator's courses and posts.",
     competitor: "Circle",
     competitorDetail:
-      "Circle launched AI Agents trained on the creator's own posts, comments, courses, and uploaded resources. Members ask questions and get answers sourced from the creator's actual content. Creators manage everything from a shared AI inbox and only step in when needed.",
+      "Circle launched AI Agents trained on the creator's own posts, comments, courses, and uploaded resources. Members ask questions via DM and get personalized answers sourced from the creator's actual content, not generic internet knowledge. Creators customize the agent with a welcome message, bio, and suggested questions, and manage everything from a shared AI inbox. Circle also has AI-powered workflow templates: agents that answer unanswered posts after 24 hours, welcome new members with context, recap completed lessons, and offer help after failed quizzes.",
     proposal:
-      "Let creators train an AI agent on their own Whop content: courses, posts, guides, and community discussions. When a member asks a question, the agent responds with answers pulled from the creator's own material. Include a shared inbox so creators can review AI responses. For a community like Malice with years of posts on sneaker drops and reselling strategies, this would make the membership dramatically more valuable.",
+      "Whop's existing AI tools help creators build and manage. The missing piece is a member-facing AI agent trained on the creator's own content. Let creators train an agent on their courses, posts, guides, and community discussions. When a member asks 'what's the best approach for Amazon wholesale right now,' the agent responds with answers from the creator's own material. For a community like Malice with years of reselling strategies, this would make the membership dramatically more valuable without increasing the creator's workload.",
     impact:
       "Increases perceived community value. Reduces creator burnout and response time. Keeps members engaged around the clock. Differentiates Whop's AI offering from generic chatbots.",
-    sources: "Circle AI Agents launch, Whop AI Chat app (confirmed in app store)",
+    sources: "Circle AI Agents (firsthand), Circle AI workflow templates (firsthand), Whop Dashboard Agent (app store), Whop Digital Products AI (app store)",
     images: [
       { src: "/img/circle_ai_agent.png", label: "Circle: AI agent setup with custom welcome and preview" },
       { src: "/img/whop_ai_apps.png", label: "Whop: AI apps are creator-facing, not member-facing" },
     ],
     metrics: [
-      { label: "Generic AI chat", whop: "App available", comp: "Circle: Available" },
+      { label: "Creator-facing AI", whop: "Dashboard Agent + Digital Products AI", comp: "Circle: Available" },
+      { label: "Member-facing AI agent", whop: "Not available", comp: "Circle: Native" },
       { label: "Trained on creator content", whop: "Not available", comp: "Circle: Native" },
-      { label: "Shared AI inbox", whop: "Not available", comp: "Circle: Native" },
-      { label: "Learns from new posts", whop: "Not available", comp: "Circle: Continuous" },
+      { label: "AI workflow templates", whop: "Not available", comp: "Circle: 8+ templates" },
     ],
   },
   {
@@ -160,7 +161,7 @@ const features = [
     title: "Gamification Layer",
     subtitle: "Points, levels, leaderboards, and content gating.",
     problem:
-      "Most Whop creators funnel their members to Discord for actual community interaction. Whop handles payments and access, but the daily engagement happens offplatform. This is a retention risk: if a competitor undercuts on payment processing, creators have no engagement layer keeping them on Whop. As one Reddit user put it, 'Whether Whop\u2019s community stays active depends almost entirely on how much the creator is feeding it.'",
+      "Most Whop creators funnel their members to Discord for actual community interaction. Whop handles payments and access, but the daily engagement happens offplatform. This is a retention risk: if a competitor undercuts on payment processing, creators have no engagement layer keeping them on Whop. Searching 'gamification' and 'engagement' in Whop's app store returns zero results. There's no native or third-party solution for this on the platform. As one Reddit user put it, 'Whether Whop's community stays active depends almost entirely on how much the creator is feeding it.'",
     competitor: "Skool",
     competitorDetail:
       "Members earn points for posting and getting likes. They level up publicly (Levels 1 through 9) and appear on weekly and all-time leaderboards. Creators can gate chat access behind Level 2 and course content behind higher levels. This reduces spam automatically (new members can't post until they've participated) and creates behavioral incentive for daily engagement without the creator doing anything manually.",
@@ -168,7 +169,7 @@ const features = [
       "Build a native points and leveling system. Members earn points for posting, commenting, completing courses, and referring others. Public leaderboards per community. Let creators gate premium content, channels, or features behind engagement levels. This gives members a reason to engage on Whop instead of Discord, and gives creators a retention mechanic that compounds over time without manual effort.",
     impact:
       "Increases daily active usage on Whop's native tools. Reduces Discord dependency. Creates switching costs that keep creators on the platform long term. Makes the AM's job easier because the platform is doing behavioral work automatically.",
-    sources: "Skool Plugins, Reddit r/onlinecourses comparison thread, multiple Skool vs Whop reviews",
+    sources: "Skool Plugins (firsthand), Whop app store search 'gamification' and 'engagement' (zero results, firsthand), Reddit r/onlinecourses comparison thread",
     images: [
       { src: "/img/whop_no_gamification.png", label: "Whop: No apps matching 'gamification'" },
       { src: "/img/skool_levels.png", label: "Skool: Level-based chat and posting gates" },
