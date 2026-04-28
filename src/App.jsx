@@ -17,9 +17,9 @@ const features = [
       "Creators spot problems earlier. AMs can prioritize accounts by health, not just revenue. Shifts the dashboard from backward-looking (what you earned) to forward-looking (what's about to change).",
     sources: "Skool dashboard (firsthand), Circle Activity Scores, Whop dashboard (firsthand as seller)",
     images: [
-      { src: "/img/whop_dashboard.jpg", label: "Whop: Revenue metrics only" },
-      { src: "/img/skool_dashboard.jpg", label: "Skool: Engagement %, Retention %, Conversion" },
-      { src: "/img/circle_dashboard.jpg", label: "Circle: Audience, MAUs, Active Members" },
+      { src: "/img/whop_dashboard.png", label: "Whop: Revenue metrics only" },
+      { src: "/img/skool_dashboard.png", label: "Skool: Engagement %, Retention %, Conversion" },
+      { src: "/img/circle_dashboard.png", label: "Circle: Audience, MAUs, Active Members" },
     ],
     metrics: [
       { label: "Retention %", whop: "Churn widget (opt-in)", comp: "Skool: Default view" },
@@ -43,7 +43,7 @@ const features = [
       "Enables proactive retention at the individual level. Makes the AM role data-driven instead of reactive. Pairs naturally with re-engagement workflows for automated follow-up.",
     sources: "Skool member profiles, Circle engagement filtering, Whop Users table (firsthand as seller)",
     images: [
-      { src: "/img/whop_user_profile.jpg", label: "Whop: User profile with empty Journey section" },
+      { src: "/img/whop_user_profile.png", label: "Whop: User profile with empty Journey section" },
     ],
     metrics: [
       { label: "Last login visible", whop: "Not surfaced", comp: "Skool: Profile view" },
@@ -68,7 +68,7 @@ const features = [
       "Recovers passive churn at the highest-intent moment. Gives AMs a concrete retention tool to configure per account. Turns existing cancel reason data from reactive reporting into proactive intervention.",
     sources: "Skool Plugins page (firsthand), Kajabi cancel flow, Whop Users table (firsthand), Whop Zapier actions",
     images: [
-      { src: "/img/skool_plugins.jpg", label: "Skool: Cancellation video plugin and level gating" },
+      { src: "/img/skool_plugins.png", label: "Skool: Cancellation video plugin and level gating" },
     ],
     metrics: [
       { label: "Cancel-page video", whop: "Not available", comp: "Skool: Pro plugin" },
@@ -93,8 +93,8 @@ const features = [
       "Catches passive churn before it becomes a cancellation. Reduces AM workload on manual check-ins. Scales retention across the entire creator base.",
     sources: "Circle workflow builder, Circle weekly digests, Whop Zapier integration (confirmed), Whop automated messages (confirmed)",
     images: [
-      { src: "/img/circle_workflows.jpg", label: "Circle: 55 pre-built workflow templates" },
-      { src: "/img/circle_ai_workflows.jpg", label: "Circle: AI-powered workflow templates" },
+      { src: "/img/circle_workflows.png", label: "Circle: 55 pre-built workflow templates" },
+      { src: "/img/circle_ai_workflows.png", label: "Circle: AI-powered workflow templates" },
     ],
     metrics: [
       { label: "Join/leave messages", whop: "Available", comp: "Circle: Available" },
@@ -119,7 +119,7 @@ const features = [
       "Creators double down on what works. AMs can advise creators on growth strategy with real data instead of guessing. Reduces reliance on external analytics tools.",
     sources: "Skool dashboard (firsthand), Skool Pro plugins list, Whop Zapier integration page",
     images: [
-      { src: "/img/whop_pixels.jpg", label: "Whop: Pixels exist in settings but data stays external" },
+      { src: "/img/whop_pixels.png", label: "Whop: Pixels exist in settings but data stays external" },
     ],
     metrics: [
       { label: "Traffic sources", whop: "Not tracked", comp: "Skool: Default view" },
@@ -144,8 +144,8 @@ const features = [
       "Increases perceived community value. Reduces creator burnout and response time. Keeps members engaged around the clock. Differentiates Whop's AI offering from generic chatbots.",
     sources: "Circle AI Agents launch, Whop AI Chat app (confirmed in app store)",
     images: [
-      { src: "/img/circle_ai_agent.jpg", label: "Circle: AI agent setup with custom welcome and preview" },
-      { src: "/img/whop_ai_apps.jpg", label: "Whop: AI apps are creator-facing, not member-facing" },
+      { src: "/img/circle_ai_agent.png", label: "Circle: AI agent setup with custom welcome and preview" },
+      { src: "/img/whop_ai_apps.png", label: "Whop: AI apps are creator-facing, not member-facing" },
     ],
     metrics: [
       { label: "Generic AI chat", whop: "App available", comp: "Circle: Available" },
@@ -170,8 +170,8 @@ const features = [
       "Increases daily active usage on Whop's native tools. Reduces Discord dependency. Creates switching costs that keep creators on the platform long term. Makes the AM's job easier because the platform is doing behavioral work automatically.",
     sources: "Skool Plugins, Reddit r/onlinecourses comparison thread, multiple Skool vs Whop reviews",
     images: [
-      { src: "/img/whop_no_gamification.jpg", label: "Whop: No apps matching 'gamification'" },
-      { src: "/img/skool_levels.jpg", label: "Skool: Level-based chat and posting gates" },
+      { src: "/img/whop_no_gamification.png", label: "Whop: No apps matching 'gamification'" },
+      { src: "/img/skool_levels.png", label: "Skool: Level-based chat and posting gates" },
     ],
     metrics: [
       { label: "Points system", whop: "Not available", comp: "Skool: Native" },
@@ -268,7 +268,7 @@ function FeatureDetail({ feature }) {
             <span style={{ width: 5, height: 5, background: "#666", borderRadius: "50%", display: "inline-block" }} />
             Evidence
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: feature.images.length === 1 ? "1fr" : feature.images.length === 2 ? "1fr 1fr" : "1fr 1fr 1fr", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: feature.images.length === 1 ? "1fr" : feature.images.length === 2 ? "1fr 1fr" : "1fr 1fr 1fr", gap: 10, maxWidth: feature.images.length === 1 ? 500 : "100%" }}>
             {feature.images.map((img, i) => (
               <div key={i} style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, overflow: "hidden" }}>
                 <img src={img.src} alt={img.label} style={{ width: "100%", display: "block" }} />
