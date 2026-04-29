@@ -269,7 +269,7 @@ function FeatureDetail({ feature }) {
             <span style={{ width: 5, height: 5, background: "#666", borderRadius: "50%", display: "inline-block" }} />
             Evidence
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: feature.images.length === 1 ? "1fr" : feature.images.length === 2 ? "1fr 1fr" : "1fr 1fr 1fr", gap: 10, maxWidth: feature.images.length === 1 ? 500 : "100%" }}>
+          <div style={{ display: "grid", gridTemplateColumns: feature.images.length === 1 ? "1fr" : feature.images.length === 2 ? "1fr 1fr" : "1fr 1fr 1fr", gap: 10, maxWidth: feature.images.length === 1 ? 500 : "100%", alignItems: "start" }}>
             {feature.images.map((img, i) => (
               <div key={i} style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, overflow: "hidden" }}>
                 <img src={img.src} alt={img.label} style={{ width: "100%", display: "block" }} />
