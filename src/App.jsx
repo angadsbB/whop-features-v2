@@ -223,11 +223,11 @@ function FeatureNav({ features, activeId, onSelect }) {
   );
 }
 
-function CompTable({ metrics }) {
+function CompTable({ metrics, competitor }) {
   return (
     <div style={{ background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, overflow: "hidden" }}>
       <div className="comp-grid" style={{ padding: "10px 16px", background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: 1, color: "#555", textTransform: "uppercase" }}>
-        <span>Feature</span><span>Whop</span><span>Competitor</span>
+        <span>Feature</span><span>Whop</span><span>{competitor}</span>
       </div>
       {metrics.map((m, i) => (
         <div key={i} className="comp-grid" style={{ padding: "10px 16px", borderBottom: i < metrics.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", fontSize: 12 }}>
@@ -257,11 +257,14 @@ function FeatureDetail({ feature }) {
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
         <Tag color="#ff5a1f">{feature.tag}</Tag>
         <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#555" }}>vs {feature.competitor}</span>
+        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#333", marginLeft: "auto" }}>0{feature.id} / 07</span>
       </div>
       <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", letterSpacing: -0.8, margin: 0, marginBottom: 6, lineHeight: 1.15 }}>{feature.title}</h2>
       <p style={{ fontSize: 14, color: "#888", margin: 0, marginBottom: 28, lineHeight: 1.5 }}>{feature.subtitle}</p>
-      <DetailSection label="The Problem" color="#f87171">{feature.problem}</DetailSection>
-      <DetailSection label={`What ${feature.competitor} Does`} color="#4ade80">{feature.competitorDetail}</DetailSection>
+      <div style={{ maxWidth: 700 }}>
+        <DetailSection label="The Problem" color="#f87171">{feature.problem}</DetailSection>
+        <DetailSection label={`What ${feature.competitor} Does`} color="#4ade80">{feature.competitorDetail}</DetailSection>
+      </div>
       
       {feature.images && feature.images.length > 0 && (
         <div style={{ marginBottom: 24 }}>
@@ -280,11 +283,13 @@ function FeatureDetail({ feature }) {
         </div>
       )}
       
-      <DetailSection label="What I'd Build" color="#ff5a1f">{feature.proposal}</DetailSection>
-      <DetailSection label="Why It Matters" color="#fbbf24">{feature.impact}</DetailSection>
+      <div style={{ maxWidth: 700 }}>
+        <DetailSection label="What I'd Build" color="#ff5a1f">{feature.proposal}</DetailSection>
+        <DetailSection label="Why It Matters" color="#fbbf24">{feature.impact}</DetailSection>
+      </div>
       <div style={{ marginBottom: 20 }}>
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, fontWeight: 700, color: "#666", letterSpacing: 1.2, textTransform: "uppercase", marginBottom: 10 }}>Comparison</div>
-        <CompTable metrics={feature.metrics} />
+        <CompTable metrics={feature.metrics} competitor={feature.competitor} />
       </div>
       <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#444", letterSpacing: 0.3, paddingTop: 12, borderTop: "1px solid rgba(255,255,255,0.05)" }}>Sources: {feature.sources}</div>
     </div>
@@ -314,6 +319,7 @@ export default function App() {
         .footer-bar { padding: 20px 32px; flex-direction: row; }
         .stats-row { display: flex; gap: 24px; }
         .comp-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; }
+        .hero-logos { display: flex; }
         @media (max-width: 768px) {
           .main-grid { grid-template-columns: 1fr; min-height: auto; }
           .nav-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -324,6 +330,7 @@ export default function App() {
           .footer-bar { padding: 16px; flex-direction: column; gap: 8px; align-items: flex-start; }
           .stats-row { gap: 16px; }
           .comp-grid { grid-template-columns: 1fr; gap: 8px; }
+          .hero-logos { display: none; }
         }
       `}</style>
 
@@ -342,17 +349,43 @@ export default function App() {
       </div>
 
       {/* Hero */}
-      <div className="hero-section" style={{ position: "relative", zIndex: 1, maxWidth: 880, background: "radial-gradient(ellipse at top left, rgba(255,90,31,0.06) 0%, transparent 50%)" }}>
-        <h1 className="hero-title" style={{ fontWeight: 900, color: "#fff", letterSpacing: -1.8, lineHeight: 1.08, marginBottom: 16 }}>
-          7 features that show<br /><span style={{ color: "#ff5a1f" }}>where Whop can win next.</span>
-        </h1>
-        <p style={{ fontSize: 16, color: "#888", lineHeight: 1.6, maxWidth: 660 }}>
-          I've been a paying member of communities on Whop and recently signed up for Skool and Circle to compare firsthand. These are real gaps I found, sourced from competitor platforms, creator feedback, and my own experience on both sides of the platform.
-        </p>
-        <div className="stats-row" style={{ marginTop: 24, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#555" }}>
-          <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>7</span><br />feature proposals</div>
-          <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />competitors analyzed</div>
-          <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />platforms tested firsthand</div>
+      <div className="hero-section" style={{ position: "relative", zIndex: 1, background: "radial-gradient(ellipse at top left, rgba(255,90,31,0.06) 0%, transparent 50%)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 40 }}>
+          <div style={{ flex: 1 }}>
+            <h1 className="hero-title" style={{ fontWeight: 900, color: "#fff", letterSpacing: -1.8, lineHeight: 1.08, marginBottom: 12 }}>
+              7 features that show<br /><span style={{ color: "#ff5a1f" }}>where Whop can win next.</span>
+            </h1>
+            <p style={{ fontSize: 14, color: "#888", lineHeight: 1.6, maxWidth: 600 }}>
+              I've been a paying member of communities on Whop and signed up for Skool and Circle to compare firsthand. These are opportunities I identified, sourced from competitor platforms, creator feedback, and my own experience on both sides of the platform.
+            </p>
+            <div className="stats-row" style={{ marginTop: 24, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#555" }}>
+              <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>7</span><br />feature proposals</div>
+              <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />competitors analyzed</div>
+              <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />platforms tested firsthand</div>
+            </div>
+          </div>
+          
+          {/* Platform logos */}
+          <div className="hero-logos" style={{ flexDirection: "column", gap: 14, alignItems: "center", paddingTop: 12, flexShrink: 0 }}>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, color: "#555", letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>Platforms Compared</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 16px", background: "rgba(255,90,31,0.06)", border: "1px solid rgba(255,90,31,0.2)", borderRadius: 8 }}>
+                <div style={{ width: 24, height: 24, background: "#ff5a1f", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 12, color: "#09090b" }}>W</div>
+                <span style={{ fontWeight: 600, fontSize: 13, color: "#fff" }}>Whop</span>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, color: "#ff5a1f", marginLeft: 4 }}>Seller + Member</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 16px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8 }}>
+                <div style={{ width: 24, height: 24, background: "#f8f8f8", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 12, color: "#111" }}>S</div>
+                <span style={{ fontWeight: 600, fontSize: 13, color: "#ccc" }}>Skool</span>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, color: "#666", marginLeft: 4 }}>Creator trial</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 16px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8 }}>
+                <div style={{ width: 24, height: 24, background: "#6C5CE7", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 12, color: "#fff" }}>C</div>
+                <span style={{ fontWeight: 600, fontSize: 13, color: "#ccc" }}>Circle</span>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, color: "#666", marginLeft: 4 }}>Creator trial</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
