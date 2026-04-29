@@ -320,6 +320,7 @@ export default function App() {
         .stats-row { display: flex; gap: 24px; }
         .comp-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; }
         .hero-logos { display: flex; }
+        .hero-logos-mobile { display: none; }
         @media (max-width: 768px) {
           .main-grid { grid-template-columns: 1fr; min-height: auto; }
           .nav-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -331,6 +332,7 @@ export default function App() {
           .stats-row { gap: 16px; }
           .comp-grid { grid-template-columns: 1fr; gap: 8px; }
           .hero-logos { display: none; }
+          .hero-logos-mobile { display: flex; }
         }
       `}</style>
 
@@ -362,6 +364,22 @@ export default function App() {
               <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>7</span><br />feature proposals</div>
               <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />competitors analyzed</div>
               <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />platforms tested firsthand</div>
+            </div>
+            
+            {/* Mobile platform badges */}
+            <div className="hero-logos-mobile" style={{ gap: 8, marginTop: 20, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: "rgba(255,90,31,0.08)", border: "1px solid rgba(255,90,31,0.2)", borderRadius: 6 }}>
+                <div style={{ width: 18, height: 18, background: "#ff5a1f", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 9, color: "#09090b" }}>W</div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>Whop</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 6 }}>
+                <div style={{ width: 18, height: 18, background: "#f8f8f8", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 9, color: "#111" }}>S</div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: "#ccc" }}>Skool</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 6 }}>
+                <div style={{ width: 18, height: 18, background: "#6C5CE7", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 9, color: "#fff" }}>C</div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: "#ccc" }}>Circle</span>
+              </div>
             </div>
           </div>
           
